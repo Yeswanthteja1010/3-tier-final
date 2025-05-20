@@ -6,90 +6,148 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
-            background: #eef2f7;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0;
             padding: 0;
+            color: #333;
         }
         .navbar {
-            background-color: #4a148c;
+            background-color: #2e0854;
             padding: 18px 40px;
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(74, 20, 140, 0.3);
+            box-shadow: 0 4px 15px rgba(46, 8, 84, 0.7);
         }
         .navbar h2 {
             margin: 0;
             font-size: 28px;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             font-weight: 700;
+            text-shadow: 0 0 5px rgba(255,255,255,0.3);
         }
         .logout-button {
-            background-color: #7b1fa2;
+            background-color: #b33a3a;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 22px;
             border: none;
-            border-radius: 25px;
+            border-radius: 30px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s ease;
             text-decoration: none;
-            box-shadow: 0 4px 12px rgba(123, 31, 162, 0.5);
+            box-shadow: 0 5px 15px rgba(179, 58, 58, 0.6);
         }
         .logout-button:hover {
-            background-color: #4a148c;
-            box-shadow: 0 6px 16px rgba(74, 20, 140, 0.8);
+            background-color: #7f2828;
+            box-shadow: 0 7px 20px rgba(127, 40, 40, 0.8);
         }
         .container {
-            margin: 40px auto;
-            max-width: 900px;
+            margin: 40px auto 70px auto;
+            max-width: 960px;
             background: white;
-            padding: 35px 40px;
-            border-radius: 15px;
-            box-shadow: 0 16px 30px rgba(0,0,0,0.07);
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
         }
         h3 {
-            color: #4a148c;
+            color: #4b2a8a;
             margin-bottom: 25px;
-            font-weight: 600;
-            letter-spacing: 0.04em;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 8px;
         }
         ul {
-            padding-left: 20px;
+            padding-left: 22px;
             list-style-type: disc;
-            color: #333;
-            font-size: 16px;
-            line-height: 1.6;
+            color: #444;
+            font-size: 17px;
+            line-height: 1.75;
+            margin-bottom: 40px;
+        }
+        ul li {
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+            cursor: default;
+        }
+        ul li:hover {
+            color: #764ba2;
+            font-weight: 600;
         }
         .userinfo {
-            margin-bottom: 30px;
-            background-color: #f9f9f9;
-            padding: 20px 25px;
-            border-left: 6px solid #4a148c;
-            border-radius: 8px;
-            font-size: 16px;
-            color: #333;
+            margin-bottom: 40px;
+            background-color: #f0f0ff;
+            padding: 25px 30px;
+            border-left: 7px solid #764ba2;
+            border-radius: 12px;
+            font-size: 17px;
+            color: #222;
+            box-shadow: 0 6px 18px rgba(118, 75, 162, 0.2);
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 15px;
-            font-size: 15px;
+            font-size: 15.5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            overflow: hidden;
         }
         table th, table td {
             border: 1px solid #ddd;
-            padding: 12px 15px;
+            padding: 14px 18px;
             text-align: left;
         }
         table th {
-            background-color: #7b1fa2;
+            background-color: #7f56d9;
             color: white;
             font-weight: 600;
+            letter-spacing: 0.03em;
         }
         table tr:nth-child(even) {
-            background-color: #f4f0fa;
+            background-color: #faf7ff;
+        }
+        table tr:hover {
+            background-color: #dcd4ff;
+        }
+        /* About Me Section */
+        .about-me {
+            margin-top: 60px;
+            background: #4b2a8a;
+            color: white;
+            padding: 35px 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(75, 42, 138, 0.7);
+            font-size: 16.8px;
+            line-height: 1.6;
+        }
+        .about-me h3 {
+            color: #f8e8ff;
+            margin-bottom: 20px;
+            font-size: 26px;
+        }
+        .about-me p {
+            max-width: 700px;
+            margin-bottom: 12px;
+        }
+        .contact-info {
+            margin-top: 15px;
+        }
+        .contact-info strong {
+            display: inline-block;
+            width: 90px;
+            color: #d6bcfa;
+        }
+        .contact-info a {
+            color: #e4d4ff;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        .contact-info a:hover {
+            color: #f2e7ff;
         }
     </style>
 </head>
@@ -109,6 +167,15 @@
         <h3>DevOps Tutorials & Tools</h3>
         <ul>
             <li th:each="item : ${materials}" th:text="${item}">Sample tutorial/tool</li>
+            <!-- Added more items for content richness -->
+            <li>CI/CD with Jenkins and GitHub Actions</li>
+            <li>Containerization using Docker and Best Practices</li>
+            <li>Microservices Architecture with Spring Boot and Kubernetes</li>
+            <li>Infrastructure as Code with Terraform & CloudFormation</li>
+            <li>Monitoring and Alerting with Prometheus & Grafana</li>
+            <li>Cloud Providers: AWS, Azure, GCP Fundamentals</li>
+            <li>Security and Compliance in DevOps Pipelines</li>
+            <li>Automated Testing and Quality Gates with SonarQube</li>
         </ul>
 
         <h3>All Registered Users</h3>
@@ -128,6 +195,17 @@
                 </tr>
             </tbody>
         </table>
+
+        <section class="about-me">
+            <h3>About Me</h3>
+            <p>Hello! I'm <strong>Your Name</strong>, a passionate DevOps enthusiast and lifelong learner. I specialize in bridging development and operations to build efficient, scalable, and secure software pipelines.</p>
+            <p>With hands-on experience in cloud automation, container orchestration, and continuous integration/delivery, I love helping teams accelerate their software delivery cycles while maintaining top-notch quality.</p>
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">linkedin.com/in/yourprofile</a></p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a></p>
+            </div>
+        </section>
     </div>
 </body>
 </html>
