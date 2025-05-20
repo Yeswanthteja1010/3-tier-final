@@ -6,23 +6,12 @@ import com.example.devopsapp.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -52,7 +41,6 @@ public class AuthController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("user") User user, Model model) {
-        // Check if email or username already exists
         Optional<User> byEmail = userService.findByEmail(user.getEmail());
         Optional<User> byUsername = userService.findByUsername(user.getUsername());
 
@@ -76,18 +64,19 @@ public class AuthController {
         if (principal == null) {
             return "redirect:/login";
         }
-        String email = principal.getName();
 
+        String email = principal.getName();
         Optional<User> userOpt = userService.findByEmail(email);
+
         if (userOpt.isEmpty()) {
             return "redirect:/login";
         }
+
         User user = userOpt.get();
 
         model.addAttribute("username", user.getUsername());
         model.addAttribute("email", user.getEmail());
 
-        // DevOps materials (can be static, hardcoded here)
         model.addAttribute("materials", new String[]{
                 "Docker Basics",
                 "Kubernetes Tutorial",
@@ -97,7 +86,9 @@ public class AuthController {
                 "Memcached Caching"
         });
 
+        List<User> allUsers = userService.getAllUsers();
+        model.addAttribute("allUsers", allUsers);
+
         return "dashboard";
     }
-
 }
