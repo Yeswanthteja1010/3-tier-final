@@ -131,3 +131,7 @@ We welcome contributions, feedback, and feature ideas! Here's how you can get in
    Navigate to your repo on GitHub and open a PR. Describe your changes and reference any related issues.
 
 Thanks for helping improve this project! 💙
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
