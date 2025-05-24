@@ -1,5 +1,11 @@
-
+<div align="center">
+   
 # **3-Tier Spring-Boot App (MongoDB,Memecached,RabbitMQ)**
+
+</div>
+
+<div align="center">
+   
 [![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white)](https://www.rabbitmq.com/)
@@ -10,7 +16,13 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
 
+</div>
+
+<div align="center">
+
 > A production-ready Spring Boot microservice powered by MongoDB, RabbitMQ, and Memcached. Designed for scalable backends, async messaging, and ultra-fast caching. Containerized with Docker for seamless deployment
+
+</div>
 
 - ✅ Spring Boot REST APIs  
 - ✅ MongoDB Integration  
