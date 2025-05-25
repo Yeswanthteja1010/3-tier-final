@@ -7,9 +7,7 @@ phases:
   build:
     commands:
       - mvn clean package -DskipTests
-      - cp target/devopsapp-1.0.0.jar app.jar
-      - zip springboot-app.zip app.jar
-
+      - cp target/devopsapp-1.0.0.jar application.jar
 artifacts:
   files:
-    - springboot-app.zip
+    - application.jar
