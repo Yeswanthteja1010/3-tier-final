@@ -3,31 +3,29 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java:  corretto11
+      java: corretto17
     commands:
-      - echo "Installing Maven"
-      - yum install -y maven
+      - echo "Installing dependencies..."
 
   pre_build:
     commands:
-      - echo "Cleaning previous builds"
+      - echo "Cleaning project..."
       - mvn clean
 
   build:
     commands:
-      - echo "Building the application"
+      - echo "Packaging project..."
       - mvn package -DskipTests
-      - echo "Copying JAR to output directory"
       - mkdir -p build
       - cp target/*.jar build/
 
   post_build:
     commands:
-      - echo "Zipping the JAR for Elastic Beanstalk"
+      - echo "Zipping JAR for Elastic Beanstalk..."
       - cd build
       - zip ../app.zip *.jar
       - cd ..
-      - echo "Build completed on `date`"
+      - echo "Build completed."
 
 artifacts:
   files:
