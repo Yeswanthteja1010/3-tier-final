@@ -153,6 +153,4 @@ We welcome contributions, feedback, and feature ideas! Here's how you can get in
 
 Thanks for helping improve this project! 💙
 
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
+>This project is licensed under the [MIT License](LICENSE).
