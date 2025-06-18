@@ -63,6 +63,7 @@ import com.example.devopsapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -87,10 +88,26 @@ public class UserService {
     }
 
 
+  //  public User saveUser(User user) {
+    //    user.setPassword(passwordEncoder.encode(user.getPassword()));
+     //   return userRepository.save(user);
+   // }
+    @Transactional
     public User saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        User savedUser = userRepository.save(user);
         return userRepository.save(user);
-    }
+        // Potential exception from RabbitMQ could rollback the transaction
+      //  try {
+        //    rabbitTemplate.convertAndSend(RabbitMQConfig.USER_QUEUE,
+         //           "New user registered: " + savedUser.getUsername());
+       // } catch (Exception e) {
+            // Log and don't block DB commit if RabbitMQ fails
+         //   System.err.println("RabbitMQ error: " + e.getMessage());
+        //}
+
+       // return savedUser;
+	}
     public boolean checkPassword(User user, String rawPassword) {
         return passwordEncoder.matches(rawPassword, user.getPassword());
     }
