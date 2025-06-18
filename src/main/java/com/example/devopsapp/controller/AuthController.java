@@ -43,7 +43,7 @@ public class AuthController {
     public String registerUser(@ModelAttribute("user") User user, Model model) {
         Optional<User> byEmail = userService.findByEmail(user.getEmail());
         Optional<User> byUsername = userService.findByUsername(user.getUsername());
-
+	System.out.println("🔍 Attempting registration: " + user.getEmail());
         if (byEmail.isPresent()) {
             model.addAttribute("errorMsg", "Email already registered");
             return "register";
