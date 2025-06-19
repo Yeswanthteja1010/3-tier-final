@@ -38,9 +38,13 @@ public class AuthController {
         model.addAttribute("user", new User());
         return "register";
     }
-
+/**
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("user") User user, Model model) {
+System.out.println("📥 Received registration data");
+    System.out.println("📧 Email: " + user.getEmail());
+    System.out.println("👤 Username: " + user.getUsername());
+    System.out.println("🔑 Password: " + user.getPassword());
         Optional<User> byEmail = userService.findByEmail(user.getEmail());
         Optional<User> byUsername = userService.findByUsername(user.getUsername());
 	System.out.println("🔍 Attempting registration: " + user.getEmail());
@@ -58,6 +62,34 @@ public class AuthController {
         model.addAttribute("msg", "Registration successful! Please login.");
         return "login";
     }
+**/
+@PostMapping("/register")
+public String registerUser(@ModelAttribute("user") User user, Model model) {
+    System.out.println("📥 Received registration data");
+    System.out.println("📧 Email: " + user.getEmail());
+    System.out.println("👤 Username: " + user.getUsername());
+    System.out.println("🔑 Password: " + user.getPassword());
+
+    Optional<User> byEmail = userService.findByEmail(user.getEmail());
+    Optional<User> byUsername = userService.findByUsername(user.getUsername());
+
+    if (byEmail.isPresent()) {
+        model.addAttribute("errorMsg", "Email already registered");
+        System.out.println("❌ Email already taken");
+        return "register";
+    }
+
+    if (byUsername.isPresent()) {
+        model.addAttribute("errorMsg", "Username already taken");
+        System.out.println("❌ Username already taken");
+        return "register";
+    }
+
+    userService.saveUser(user);
+    System.out.println("✅ Saved user: " + user.getEmail());
+    model.addAttribute("msg", "Registration successful! Please login.");
+    return "login";
+}
 
     @GetMapping("/dashboard")
     public String dashboard(Model model, Principal principal) {

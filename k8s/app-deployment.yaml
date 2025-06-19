@@ -16,10 +16,18 @@ spec:
         - name: devops-app
           image: 026090546767.dkr.ecr.us-east-1.amazonaws.com/spring:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: docker
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://database-mysql.cluster-cjo0kiusqwid.us-east-1.rds.amazonaws.com/newdb
+            - name: SPRING_DATASOURCE_USERNAME
+              value: admin
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: adminadmin
+            - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+              value: org.hibernate.dialect.MySQL8Dialect
 ---
 apiVersion: v1
 kind: Service
